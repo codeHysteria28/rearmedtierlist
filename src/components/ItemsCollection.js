@@ -17,7 +17,7 @@ const Items = () => {
 
     useEffect(()=> {
         getItems();
-    },[items]);
+    },[]);
 
     return (
         <>
