@@ -18,7 +18,7 @@ const Header = () => {
     const [showA, setShowA] = useState(true);
     const toggleShowA = () => setShowA(!showA);
 
-    const url = "http://localhost:3333/upload_item";
+    const url = "https://rearmedtierlist-node-backend.azurewebsites.net/upload_item";
 
     const saveImg = e => {
         const selectedFile = e.target.files[0];

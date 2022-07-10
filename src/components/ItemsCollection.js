@@ -5,7 +5,7 @@ import axios from "axios";
 const Items = () => {
     const [items, setItems] = useState([]);
 
-    const url = "http://localhost:3333/getAllItems";
+    const url = "https://rearmedtierlist-node-backend.azurewebsites.net/getAllItems";
 
     const getItems = () => {
         axios.get(url)
