@@ -48,7 +48,6 @@ const Items = () => {
 
         axios.post(url, item_obj, {headers: {"Content-type": "multipart/form-data",}}).then(res => {
             if(res.data === "success") {
-                console.log('success');
                 toggleShowA();
                 getItems();
             }else {
@@ -141,11 +140,6 @@ const Items = () => {
             <ToastContainer position="top-end">
                 <Toast style={{ margin: "13px" }} bg="success" show={showA} onClose={toggleShowA} delay={3000} autohide>
                 <Toast.Header>
-                    <img
-                    src="holder.js/20x20?text=%20"
-                    className="rounded me-2"
-                    alt=""
-                    />
                     <strong className="me-auto">Success</strong>
                 </Toast.Header>
                 <Toast.Body>New Item added to the database!</Toast.Body>
