@@ -15,7 +15,7 @@ const Header = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [showA, setShowA] = useState(true);
+    const [showA, setShowA] = useState(false);
     const toggleShowA = () => setShowA(!showA);
 
     const url = "https://rearmedtierlist-node-backend.azurewebsites.net/upload_item";
