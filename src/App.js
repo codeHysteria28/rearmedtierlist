@@ -9,7 +9,9 @@ function App() {
     <>
       <Header/>
       <Container fluid>
-      <Row><Items/></Row>
+        <Row>
+          <Items/>
+        </Row>
       </Container>
     </>
   );
