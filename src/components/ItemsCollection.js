@@ -7,12 +7,14 @@ import Toast from "react-bootstrap/Toast";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Container from 'react-bootstrap/Container';
+import Accordion from 'react-bootstrap/Accordion';
+import Row from "react-bootstrap/Row";
+import Col from 'react-bootstrap/Col';
 
 const Items = () => {
     const [items, setItems] = useState([]);
     const [show, setShow] = useState(false);
     const [file, setFile] = useState(null);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -62,25 +64,48 @@ const Items = () => {
         getItems();
     }, []);
 
+    const categories = {};
+
+    for(const item of items) {
+        if(item.item_category in categories) {
+            categories[item.item_category].push(item);
+        }else {
+            categories[item.item_category] = [item];
+        }
+    }
+
     return (
         <>
             <Container fluid>
                 <Button variant="success" onClick={handleShow} style={{ marginBottom: "2rem" }}>Add Item</Button>
             </Container>
-            {
-                items.map((item, index) => {
-                    return (
-                        <Item key={index} 
-                        itemName={item.item_name} 
-                        itemImageUrl={item.item_image} 
-                        itemCategory={item.item_category}
-                        sellPrice={item.sell_price}
-                        buyPrice={item.buy_price}
-                        slotSize={item.slot_size}
-                        />
-                    );
-                })  
-            }
+
+            <Accordion>
+                {
+                    Object.entries(categories).map((entry) => {
+                        const category = entry[0];
+                        const itemList = entry[1];
+
+                        return (
+                            <Accordion.Item eventKey={category} key={category}>
+                                <Accordion.Header>{category}</Accordion.Header>
+                                <Accordion.Body>
+                                    <Container>
+                                        <Row>
+                                            {
+                                                itemList.map((item, key) => (
+                                                    <Item key={key} itemName={item.item_name} itemImageUrl={item.item_image} itemCategory={item.item_category} sellPrice={item.sell_price} buyPrice={item.buy_price} slotSize={item.slot_size}
+                                                    />
+                                                ))
+                                            }
+                                        </Row>
+                                    </Container>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        );
+                    })
+                }
+            </Accordion>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
