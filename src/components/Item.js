@@ -9,11 +9,11 @@ import Badge from "react-bootstrap/Badge";
 const Item = (props) => {
     return (
         <Col>
-            <Card style={{ width: '18rem', marginBottom: '1rem' }}>
+            <Card style={{ width: '18rem', marginBottom: '1rem', border: "1px solid lightgrey" }}>
                 <Card.Img variant="top" src={props.itemImageUrl} alt={props.itemName}/>
                 <Card.Body>
-                    <Badge bg="secondary">{props.itemCategory}</Badge>
                     <Card.Title>{props.itemName}</Card.Title>
+                    <Badge bg="secondary" style={{ marginBottom: '1rem' }}>{props.itemCategory}</Badge>
                     <Card.Text>Slot size: <b>{props.slotSize}</b></Card.Text>
                     <Container>
                         <Row>
